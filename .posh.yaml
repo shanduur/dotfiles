@@ -19,7 +19,8 @@ blocks:
         background: transparent
         template:
           " {{ .HEAD }}{{ if .Working.Changed }}*{{ else if .Staging.Changed }}+{{ end
-          }} <cyan>{{ if gt .Behind 0 }}<{{ end }}{{ if gt .Ahead 0 }}>{{ end
+          }} <cyan>{{ if gt .Behind 0 }}<{{ print .Behind }}{{ end }}{{ if gt .Ahead 0
+          }}>{{ print .Ahead }}{{ end
           }}</>"
         properties:
           branch_icon: ""
