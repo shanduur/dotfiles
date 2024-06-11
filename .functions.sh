@@ -61,6 +61,10 @@ function kcf() {(
   chmod 600 "${HOME}"/.kube/config
 )}
 
+function kcrm() {(
+    rm "~/.kube/config.d/${1}"
+)}
+
 function upd8() {
   # loop through arguments
   for arg in "$@"

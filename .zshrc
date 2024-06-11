@@ -22,3 +22,23 @@ _check_eval oh-my-posh init zsh --config "${HOME}/.posh.yaml"
 _check_eval docker completion zsh
 _check_eval kubectl completion zsh
 _check_eval fzf --zsh
+
+#########################################################################################
+# Custom completion loader
+#----------------------------------------------------------------------------------------
+
+export ZSH="${HOME}/.oh-my-zsh"
+
+plugins=(
+    brew
+    golang
+    rust
+    docker
+    kubectl
+    helm
+    gh
+    git
+    aliases
+)
+
+source "${ZSH}/oh-my-zsh.sh"

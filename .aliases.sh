@@ -2,6 +2,8 @@
 # Aliases
 #----------------------------------------------------------------------------------------
 
+# General
+
 alias grep='grep --color=auto'
 
 alias l='ls --color=auto'
@@ -11,4 +13,9 @@ alias ls='ls --color=auto -a'
 
 alias hist='cat ${HOME}/.zsh_history | grep '
 
+# git
+
 alias gcan='git commit --amend --no-edit'
+
+# kubernetes
+alias k='kubectl'
