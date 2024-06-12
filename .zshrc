@@ -24,10 +24,10 @@ _check_eval kubectl completion zsh
 _check_eval fzf --zsh
 
 #########################################################################################
-# Custom completion loader
+# Plugins
 #----------------------------------------------------------------------------------------
 
-export ZSH="${HOME}/.oh-my-zsh"
+export ZSH="${HOME}/.ohmyzsh"
 
 plugins=(
     brew
