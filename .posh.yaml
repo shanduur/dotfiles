@@ -28,7 +28,7 @@ blocks:
           branch_identical_icon: ""
           branch_ahead_icon: "+"
           branch_gone_icon: "?"
-          branch_max_length: 10
+          branch_max_length: 32
           truncate_symbol: "..."
           codecommit_icon: ""
           codeberg_icon: ""
@@ -49,6 +49,10 @@ blocks:
         template: "{{ .FormattedMs }}"
         properties:
           threshold: 5000
+      - type: python
+        style: plain
+      - type: kubectl
+        style: plain
   - type: prompt
     alignment: left
     newline: true
