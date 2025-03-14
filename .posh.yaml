@@ -1,70 +1,76 @@
-#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-version: 2
-final_space: true
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+secondary_prompt:
+  template: ">> "
+  foreground: default
+  background: transparent
 console_title_template: "{{ .Shell }} in {{ .Folder }}"
 blocks:
-  - type: prompt
-    alignment: left
-    segments:
-      - type: path
-        style: plain
-        background: transparent
-        foreground: blue
-        template: "{{ .Path }}"
-        properties:
-          style: full
-      - type: git
-        style: plain
-        foreground: p:grey
-        background: transparent
-        template:
-          " {{ .HEAD }}{{ if .Working.Changed }}*{{ else if .Staging.Changed }}+{{ end
-          }} <cyan>{{ if gt .Behind 0 }}<{{ print .Behind }}{{ end }}{{ if gt .Ahead 0
-          }}>{{ print .Ahead }}{{ end
-          }}</>"
-        properties:
-          branch_icon: ""
-          commit_icon: "@"
-          branch_identical_icon: ""
-          branch_ahead_icon: "+"
-          branch_gone_icon: "?"
-          branch_max_length: 32
-          truncate_symbol: "..."
-          codecommit_icon: ""
-          codeberg_icon: ""
-          azure_devops_icon: ""
-          bitbucket_icon: ""
-          gitlab_icon: ""
-          github_icon: ""
-          git_icon: ""
-          tag_icon: ""
-          fetch_status: true
-  - type: rprompt
-    overflow: hidden
-    segments:
-      - type: executiontime
-        style: plain
-        foreground: yellow
-        background: transparent
-        template: "{{ .FormattedMs }}"
-        properties:
-          threshold: 5000
-      - type: python
-        style: plain
-      - type: kubectl
-        style: plain
-  - type: prompt
-    alignment: left
-    newline: true
-    segments:
-      - type: text
-        style: plain
-        foreground_templates:
-          - "{{if gt .Code 0}}red{{end}}"
-          - "{{if eq .Code 0}}green{{end}}"
-        background: transparent
-        template: ">"
-secondary_prompt:
-  foreground: grey
-  background: transparent
-  template: ">> "
+- type: prompt
+  alignment: left
+  segments:
+  - properties:
+      cache_duration: none
+      style: full
+    template: "{{ .Path }}"
+    foreground: blue
+    background: transparent
+    type: path
+    style: plain
+  - properties:
+      azure_devops_icon: ""
+      bitbucket_icon: ""
+      branch_ahead_icon: "+"
+      branch_gone_icon: "?"
+      branch_icon: ""
+      branch_identical_icon: ""
+      branch_max_length: 32
+      cache_duration: none
+      codeberg_icon: ""
+      codecommit_icon: ""
+      commit_icon: "@"
+      fetch_status: true
+      git_icon: ""
+      github_icon: ""
+      gitlab_icon: ""
+      tag_icon: ""
+      truncate_symbol: ...
+    template: " {{ .HEAD }}{{ if .Working.Changed }}*{{ else if .Staging.Changed }}+{{ end }} <cyan>{{ if gt .Behind 0 }}<{{ print .Behind }}{{ end }}{{ if gt .Ahead 0 }}>{{ print .Ahead }}{{ end }}</>"
+    foreground: p:grey
+    background: transparent
+    type: git
+    style: plain
+- type: rprompt
+  overflow: hidden
+  segments:
+  - properties:
+      cache_duration: none
+      threshold: 5000
+    template: "{{ .FormattedMs }}"
+    foreground: yellow
+    background: transparent
+    type: executiontime
+    style: plain
+  - properties:
+      cache_duration: none
+    type: python
+    style: plain
+  - properties:
+      cache_duration: none
+    type: kubectl
+    style: plain
+- type: prompt
+  alignment: left
+  segments:
+  - properties:
+      cache_duration: none
+    template: ">"
+    background: transparent
+    type: text
+    style: plain
+    foreground_templates:
+    - "{{if gt .Code 0}}red{{end}}"
+    - "{{if eq .Code 0}}green{{end}}"
+  newline: true
+version: 3
+final_space: true
