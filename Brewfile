@@ -1,6 +1,4 @@
-tap "jandedobbeleer/oh-my-posh"
-brew "jandedobbeleer/oh-my-posh/oh-my-posh"
-
+brew "oh-my-posh"
 brew "fzf"
 brew "gh"
 brew "git"
