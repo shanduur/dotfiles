@@ -7,6 +7,7 @@ brew "jq"
 brew "neovim"
 brew "oh-my-posh"
 
+cask "clipy"
 cask "ghostty"
 cask "zed"
 
