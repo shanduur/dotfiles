@@ -9,3 +9,6 @@ brew "oh-my-posh"
 
 cask "ghostty"
 cask "zed"
+
+tap "nikitabobko/tap"
+cask "nikitabobko/tap/aerospace"
