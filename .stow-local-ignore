@@ -3,4 +3,5 @@
 ^/README.*
 ^/renovate.json
 ^/.gitmodules
+^/.git
 ^/vscode
