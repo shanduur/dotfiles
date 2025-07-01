@@ -6,6 +6,7 @@ brew "gnupg"
 brew "jq"
 brew "neovim"
 brew "oh-my-posh"
+brew "pinentry-mac"
 
 cask "clipy"
 cask "ghostty"
