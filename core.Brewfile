@@ -1,3 +1,4 @@
+# vim: ft=ruby
 brew "fzf"
 brew "gh"
 brew "git"

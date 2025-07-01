@@ -1,0 +1,17 @@
+# vim: ft=gitconfig
+[user]
+	name = Mateusz Urbanek
+	email = mateusz.urbanek.98@gmail.com
+	signingkey = 965531459857EDA0
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+[core]
+	ignorecase = false
+[safe]
+	directory = *
