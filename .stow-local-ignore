@@ -1,5 +1,7 @@
 ^/Brewfile
+^/.*.Brewfile
 ^/Brewfile.lock.json
+^/.*.Brewfile.lock.json
 ^/README.*
 ^/renovate.json
 ^/.gitmodules
