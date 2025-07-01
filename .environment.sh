@@ -11,6 +11,10 @@ fi
 export PATH="${PATH}:${HOME}/go/bin:${HOME}/.local/bin:${HOME}/.krew/bin"
 export EDITOR="nvim"
 
+if [ -d "/usr/local/go/bin" ]; then
+    export PATH="/usr/local/go/bin:$PATH"
+fi
+
 if type "${BREW_BIN}" &> /dev/null; then
     export BREW_PREFIX="$("${BREW_BIN}" --prefix)"
     export PATH="${BREW_PREFIX}/bin:${PATH}"
