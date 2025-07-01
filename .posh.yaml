@@ -59,6 +59,10 @@ blocks:
       cache_duration: none
     type: kubectl
     style: plain
+  - type: session
+    style: plain
+    template: " {{ .HostName }}"
+    foreground: yellow
 - type: prompt
   alignment: left
   segments:
