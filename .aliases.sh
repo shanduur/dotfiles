@@ -14,8 +14,11 @@ alias ls='ls --color=auto -a'
 
 alias hist='cat ${HOME}/.zsh_history | grep '
 
-# git
+alias vscsr='pkill -f "code"'
+alias gpgt='echo "test" | gpg --clear-sign'
+alias ssh='TERM=xterm-256color ssh'
 
+# git
 alias gcan='git commit --amend --no-edit'
 
 # kubernetes
