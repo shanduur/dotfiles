@@ -42,4 +42,8 @@ plugins=(
     aliases
 )
 
+if type gpgconf &> /dev/null; then
+    gpgconf --create-socketdir
+fi
+
 source "${ZSH}/oh-my-zsh.sh"
