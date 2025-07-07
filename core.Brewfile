@@ -7,6 +7,7 @@ brew "gnupg"
 brew "jq"
 brew "neovim"
 brew "oh-my-posh"
+brew "stow"
 
 cask "clipy"
 cask "ghostty"

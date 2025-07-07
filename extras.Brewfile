@@ -3,7 +3,6 @@ brew "pinentry-mac"
 
 cask "1password"
 cask "1password-cli"
-cask "google-chrome"
 cask "notion"
 cask "notion-calendar"
 cask "notion-mail"
