@@ -1,4 +1,5 @@
 # vim: ft=ruby
+brew "crane"
 brew "pinentry-mac"
 
 cask "1password"
