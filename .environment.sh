@@ -18,6 +18,7 @@ fi
 if type "${BREW_BIN}" &> /dev/null; then
     export BREW_PREFIX="$("${BREW_BIN}" --prefix)"
     export PATH="${BREW_PREFIX}/bin:${PATH}"
+    export PKG_CONFIG_PATH="${BREW_PREFIX}/opt/libarchive/lib/pkgconfig"
     for bindir in "${BREW_PREFIX}/opt/"*"/libexec/gnubin"; do export PATH=$bindir:$PATH; done
     for bindir in "${BREW_PREFIX}/opt/"*"/bin"; do export PATH=$bindir:$PATH; done
     for mandir in "${BREW_PREFIX}/opt/"*"/libexec/gnuman"; do export MANPATH=$mandir:$MANPATH; done

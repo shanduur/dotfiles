@@ -1,4 +1,7 @@
 # vim: ft=ruby
+brew "c3c"
+brew "zig"
+
 cask "discord"
 cask "sf-symbols"
 
