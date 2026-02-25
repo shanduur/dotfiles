@@ -34,9 +34,7 @@ plugins=(
     brew
     golang
     rust
-    docker
     kubectl
-    helm
     gh
     git
     aliases
