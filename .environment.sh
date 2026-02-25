@@ -19,6 +19,10 @@ if [ -d "${HOME}/.opencode/bin" ]; then
     export PATH="${PATH}:${HOME}/.opencode/bin"
 fi
 
+if [ -d "/opt/homebrew/sbin" ]; then
+    export PATH="${PATH}:/opt/homebrew/sbin"
+fi
+
 if type "${BREW_BIN}" &> /dev/null; then
     export BREW_PREFIX="$("${BREW_BIN}" --prefix)"
     export PATH="${BREW_PREFIX}/bin:${PATH}"
