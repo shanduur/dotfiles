@@ -12,7 +12,11 @@ export PATH="${PATH}:${HOME}/go/bin:${HOME}/.local/bin:${HOME}/.krew/bin"
 export EDITOR="nvim"
 
 if [ -d "/usr/local/go/bin" ]; then
-    export PATH="/usr/local/go/bin:$PATH"
+    export PATH="/usr/local/go/bin:${PATH}"
+fi
+
+if [ -d "${HOME}/.opencode/bin" ]; then
+    export PATH="${PATH}:${HOME}/.opencode/bin"
 fi
 
 if type "${BREW_BIN}" &> /dev/null; then

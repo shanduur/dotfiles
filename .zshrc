@@ -49,3 +49,4 @@ if [[ "$(uname)" != "Darwin" ]]; then
 fi
 
 source "${ZSH}/oh-my-zsh.sh"
+
