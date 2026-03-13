@@ -19,6 +19,12 @@ if [ -d "${HOME}/.opencode/bin" ]; then
     export PATH="${PATH}:${HOME}/.opencode/bin"
 fi
 
+export PATH="/Users/shanduur/.bun/bin:$PATH"
+
+if [ -d "${HOME}/.bun/bin" ]; then
+    export PATH="${PATH}:${HOME}/.bun/bin"
+fi
+
 if [ -d "/opt/homebrew/sbin" ]; then
     export PATH="${PATH}:/opt/homebrew/sbin"
 fi
