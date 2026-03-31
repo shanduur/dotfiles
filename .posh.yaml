@@ -1,31 +1,43 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
+version: 4
+final_space: true
+
 secondary_prompt:
   template: ">> "
   foreground: default
   background: transparent
 console_title_template: "{{ .Shell }} in {{ .Folder }}"
+
 blocks:
 - type: prompt
   alignment: left
   segments:
-  - properties:
-      cache_duration: none
-      style: full
+  - type: path
+    style: plain
     template: "{{ .Path }}"
     foreground: blue
     background: transparent
-    type: path
+    cache:
+      duration: none
+    options:
+      style: full
+
+  - type: git
     style: plain
-  - properties:
+    template: " {{ .HEAD }}{{ if .Working.Changed }}*{{ else if .Staging.Changed }}+{{ end }} <cyan>{{ if gt .Behind 0 }}<{{ print .Behind }}{{ end }}{{ if gt .Ahead 0 }}>{{ print .Ahead }}{{ end }}</>"
+    foreground: p:grey
+    background: transparent
+    cache:
+      duration: none
+    options:
       azure_devops_icon: ""
       bitbucket_icon: ""
       branch_ahead_icon: "+"
+      branch_behind_icon: "-"
       branch_gone_icon: "?"
       branch_icon: ""
       branch_identical_icon: ""
-      branch_max_length: 32
-      cache_duration: none
       codeberg_icon: ""
       codecommit_icon: ""
       commit_icon: "@"
@@ -34,47 +46,51 @@ blocks:
       github_icon: ""
       gitlab_icon: ""
       tag_icon: ""
-      truncate_symbol: ...
-    template: " {{ .HEAD }}{{ if .Working.Changed }}*{{ else if .Staging.Changed }}+{{ end }} <cyan>{{ if gt .Behind 0 }}<{{ print .Behind }}{{ end }}{{ if gt .Ahead 0 }}>{{ print .Ahead }}{{ end }}</>"
-    foreground: p:grey
-    background: transparent
-    type: git
-    style: plain
-- type: rprompt
-  overflow: hidden
+      rebase_icon: ""
+      cherry_pick_icon: ""
+      revert_icon: ""
+      merge_icon: ""
+      no_commits_icon: ""
+
+- type: prompt
+  alignment: right
+  overflow: hide
   segments:
-  - properties:
-      cache_duration: none
-      threshold: 5000
+  - type: executiontime
+    style: plain
     template: "{{ .FormattedMs }}"
     foreground: yellow
     background: transparent
-    type: executiontime
+    cache:
+      duration: none
+    options:
+      threshold: 5000
+
+  - type: python
     style: plain
-  - properties:
+    options:
       cache_duration: none
-    type: python
+
+  - type: kubectl
     style: plain
-  - properties:
-      cache_duration: none
-    type: kubectl
-    style: plain
+    cache:
+      duration: none
+
   - type: session
     style: plain
     template: " {{ .HostName }}"
     foreground: yellow
+
 - type: prompt
   alignment: left
+  newline: true
   segments:
-  - properties:
-      cache_duration: none
+  - type: text
+    style: plain
     template: ">"
     background: transparent
-    type: text
-    style: plain
+    cache:
+      duration: none
     foreground_templates:
     - "{{if gt .Code 0}}red{{end}}"
     - "{{if eq .Code 0}}green{{end}}"
-  newline: true
-version: 3
-final_space: true
