@@ -1,4 +1,6 @@
 # vim: ft=ruby
+tap "netbirdio/tap"
+
 brew "fzf"
 brew "gh"
 brew "git"
@@ -12,6 +14,7 @@ brew "neovim"
 brew "oh-my-posh"
 brew "stow"
 
+cask "netbirdio/tap/netbird-ui"
 cask "clipy"
 cask "ghostty"
 cask "orbstack"
