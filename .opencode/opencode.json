@@ -4,17 +4,17 @@
     "mintlify-docs": {
       "type": "remote",
       "url": "https://www.mintlify.com/docs/mcp",
-      "enabled": true
+      "enabled": false
     },
     "mcp-docs": {
       "type": "remote",
       "url": "https://modelcontextprotocol.io/mcp",
-      "enabled": true
+      "enabled": false
     },
     "sidero-docs": {
       "type": "remote",
       "url": "https://docs.siderolabs.com/mcp",
-      "enabled": true
+      "enabled": false
     }
   }
 }

@@ -3,38 +3,55 @@
 # vim: ft=sh
 #----------------------------------------------------------------------------------------
 
+export DO_NOT_TRACK="true"
+
+# prepend (higher priority)
+prepend_paths=(
+    "/usr/local/go/bin"
+)
+
+# append (lower priority)
+append_paths=(
+    "${HOME}/.local/bin"
+    "${HOME}/go/bin"
+    "${HOME}/.cargo/bin"
+    "${HOME}/.krew/bin"
+    "${HOME}/.opencode/bin"
+    "${HOME}/.bun/bin"
+)
+
+# prepend loop
+for p in "${prepend_paths[@]}"; do
+    [ -d "$p" ] && PATH="$p:$PATH"
+done
+
+# append loop
+for p in "${append_paths[@]}"; do
+    [ -d "$p" ] && PATH="$PATH:$p"
+done
+
 BREW_BIN="/usr/local/bin/brew"
 if [ -f "/opt/homebrew/bin/brew" ]; then
     BREW_BIN="/opt/homebrew/bin/brew"
 fi
 
-export PATH="${PATH}:${HOME}/go/bin:${HOME}/.local/bin:${HOME}/.krew/bin"
-export EDITOR="nvim"
-
-if [ -d "/usr/local/go/bin" ]; then
-    export PATH="/usr/local/go/bin:${PATH}"
-fi
-
-if [ -d "${HOME}/.opencode/bin" ]; then
-    export PATH="${PATH}:${HOME}/.opencode/bin"
-fi
-
-export PATH="/Users/shanduur/.bun/bin:$PATH"
-
-if [ -d "${HOME}/.bun/bin" ]; then
-    export PATH="${PATH}:${HOME}/.bun/bin"
-fi
-
-if [ -d "/opt/homebrew/sbin" ]; then
-    export PATH="${PATH}:/opt/homebrew/sbin"
-fi
-
 if type "${BREW_BIN}" &> /dev/null; then
     export BREW_PREFIX="$("${BREW_BIN}" --prefix)"
     export PATH="${BREW_PREFIX}/bin:${PATH}"
+    export PATH="${BREW_PREFIX}/sbin:${PATH}"
     export PKG_CONFIG_PATH="${BREW_PREFIX}/opt/libarchive/lib/pkgconfig"
-    for bindir in "${BREW_PREFIX}/opt/"*"/libexec/gnubin"; do export PATH=$bindir:$PATH; done
-    for bindir in "${BREW_PREFIX}/opt/"*"/bin"; do export PATH=$bindir:$PATH; done
-    for mandir in "${BREW_PREFIX}/opt/"*"/libexec/gnuman"; do export MANPATH=$mandir:$MANPATH; done
-    for mandir in "${BREW_PREFIX}/opt/"*"/share/man/man1"; do export MANPATH=$mandir:$MANPATH; done
+
+    for bindir in "${BREW_PREFIX}/opt/"*"/libexec/gnubin"; do PATH="${bindir}:${PATH}"; done
+    for bindir in "${BREW_PREFIX}/opt/"*"/bin"; do PATH="${bindir}:${PATH}"; done
+    for mandir in "${BREW_PREFIX}/opt/"*"/libexec/gnuman"; do MANPATH="${mandir}:${MANPATH}"; done
+    for mandir in "${BREW_PREFIX}/opt/"*"/share/man/man1"; do MANPATH="${mandir}:${MANPATH}"; done
+fi
+
+# export variables
+export PATH MANPATH PKG_CONFIG_PATH
+
+# if nvim exists in path (through brew or otherwise), set it as the default editor
+if type "nvim" &> /dev/null; then
+    export EDITOR="nvim"
+    export VISUAL="nvim"
 fi
