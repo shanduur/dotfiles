@@ -22,12 +22,12 @@ append_paths=(
 
 # prepend loop
 for p in "${prepend_paths[@]}"; do
-    [ -d "$p" ] && PATH="$p:$PATH"
+    [ -d "${p}" ] && PATH="${p}:${PATH}"
 done
 
 # append loop
 for p in "${append_paths[@]}"; do
-    [ -d "$p" ] && PATH="$PATH:$p"
+    [ -d "${p}" ] && PATH="${PATH}:${p}"
 done
 
 BREW_BIN="/usr/local/bin/brew"
@@ -45,6 +45,18 @@ if type "${BREW_BIN}" &> /dev/null; then
     for bindir in "${BREW_PREFIX}/opt/"*"/bin"; do PATH="${bindir}:${PATH}"; done
     for mandir in "${BREW_PREFIX}/opt/"*"/libexec/gnuman"; do MANPATH="${mandir}:${MANPATH}"; done
     for mandir in "${BREW_PREFIX}/opt/"*"/share/man/man1"; do MANPATH="${mandir}:${MANPATH}"; done
+fi
+
+export NVM_DIR="${HOME}/.nvm"
+
+if [ -d "${NVM_DIR}" ]; then
+    if [ -s "${NVM_DIR}/nvm.sh" ]; then
+        source "${NVM_DIR}/nvm.sh"
+    fi
+
+    if [ -s "${NVM_DIR}/bash_completion" ]; then
+        source "${NVM_DIR}/bash_completion"
+    fi
 fi
 
 # export variables
