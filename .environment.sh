@@ -4,6 +4,7 @@
 #----------------------------------------------------------------------------------------
 
 export DO_NOT_TRACK="true"
+export CAVEMAN_DEFAULT_MODE="ultra" 
 
 # prepend (higher priority)
 prepend_paths=(
