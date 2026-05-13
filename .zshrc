@@ -3,6 +3,17 @@
 # vim: ft=zsh
 #----------------------------------------------------------------------------------------
 
+BREW_BIN="/usr/local/bin/brew"
+if [ -f "/opt/homebrew/bin/brew" ]; then
+    BREW_BIN="/opt/homebrew/bin/brew"
+fi
+
+if type "${BREW_BIN}" &> /dev/null; then
+    export BREW_PREFIX="$("${BREW_BIN}" --prefix)"
+
+    fpath=("${BREW_PREFIX}/share/zsh/site-functions" "${fpath[@]}")
+fi
+
 autoload -Uz compinit
 compinit
 
@@ -47,4 +58,3 @@ if [[ "$(uname)" != "Darwin" ]]; then
 fi
 
 source "${ZSH}/oh-my-zsh.sh"
-
