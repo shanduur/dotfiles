@@ -4,7 +4,7 @@
 #----------------------------------------------------------------------------------------
 
 export DO_NOT_TRACK="true"
-export CAVEMAN_DEFAULT_MODE="ultra" 
+export CAVEMAN_DEFAULT_MODE="ultra"
 
 # prepend (higher priority)
 prepend_paths=(
@@ -19,6 +19,7 @@ append_paths=(
     "${HOME}/.krew/bin"
     "${HOME}/.opencode/bin"
     "${HOME}/.bun/bin"
+    "${HOME}/Library/pnpm/bin"
 )
 
 # prepend loop
@@ -36,7 +37,7 @@ if [ -f "/opt/homebrew/bin/brew" ]; then
     BREW_BIN="/opt/homebrew/bin/brew"
 fi
 
-if type "${BREW_BIN}" &> /dev/null; then
+if type "${BREW_BIN}" &>/dev/null; then
     export BREW_PREFIX="$("${BREW_BIN}" --prefix)"
     export PATH="${BREW_PREFIX}/bin:${PATH}"
     export PATH="${BREW_PREFIX}/sbin:${PATH}"
@@ -64,7 +65,12 @@ fi
 export PATH MANPATH PKG_CONFIG_PATH
 
 # if nvim exists in path (through brew or otherwise), set it as the default editor
-if type "nvim" &> /dev/null; then
+if type "nvim" &>/dev/null; then
     export EDITOR="nvim"
     export VISUAL="nvim"
+fi
+
+# devenv environment
+if [ -f /etc/profile.d/devenv.sh ]; then
+    source /etc/profile.d/devenv.sh
 fi
