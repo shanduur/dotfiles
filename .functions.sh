@@ -130,3 +130,12 @@ function _check_eval() {
         eval "$(${@})"
     fi
 }
+
+function yeet() {(
+  if [ ! -f "${1}" ]; then
+    echo_erro "\"${1}\" does not exist"
+    exit 1
+  fi
+
+  perl -pe 'chomp if eof' "${1}" | sponge "${1}"
+)}
